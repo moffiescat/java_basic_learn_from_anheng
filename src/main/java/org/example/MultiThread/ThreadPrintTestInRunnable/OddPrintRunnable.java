@@ -1,4 +1,4 @@
-package org.example.MultiThread.ThreadPrintTest;
+package org.example.MultiThread.ThreadPrintTestInRunnable;
 
 public class OddPrintRunnable implements Runnable{
     private final Object lock;
@@ -13,20 +13,25 @@ public class OddPrintRunnable implements Runnable{
 
     @Override
     public void run(){
-        while(count[0] <= maxNum){
+        while(true){
             synchronized(lock){
-                if(count[0] % 2 == 1){
-                    System.out.printf("%s:%d%n",Thread.currentThread().getName(),count[0]);
-                    count[0]++;
-                    lock.notify();
-                }else{
+                if(count[0] >= maxNum){
+                    lock.notifyAll();
+                    break;
+                }
+
+                while(count[0] % 2 == 0){
                     try{
                         lock.wait();
                     }catch(InterruptedException e){
                         Thread.currentThread().interrupt();
-                        break;
+                        return;
                     }
                 }
+
+                System.out.printf("%s:%d%n", Thread.currentThread().getName(), count[0]);
+                count[0]++;
+                lock.notifyAll();
             }
         }
     }

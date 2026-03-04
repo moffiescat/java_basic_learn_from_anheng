@@ -1,4 +1,4 @@
-package org.example.MultiThread.ThreadPrintTest;
+package org.example.MultiThread.ThreadPrintTestInRunnable;
 
 public class ThreadPrintTest_Runnable{
     public static void main(String[] args){

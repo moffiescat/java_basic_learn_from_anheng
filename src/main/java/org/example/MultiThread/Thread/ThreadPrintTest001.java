@@ -1,4 +1,4 @@
-package org.example.MultiThread;
+package org.example.MultiThread.Thread;
 
 public class ThreadPrintTest001 extends Thread{
     private static final Object lock = new Object();

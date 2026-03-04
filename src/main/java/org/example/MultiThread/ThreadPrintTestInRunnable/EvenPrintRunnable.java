@@ -1,6 +1,5 @@
-package org.example.MultiThread.ThreadPrintTest;
+package org.example.MultiThread.ThreadPrintTestInRunnable;
 
-// 独立的Runnable类
 public class EvenPrintRunnable implements Runnable {
     private final Object lock;
     private volatile int[] count;
@@ -14,20 +13,25 @@ public class EvenPrintRunnable implements Runnable {
 
     @Override
     public void run() {
-        while (count[0] <= maxNum) {
+        while (true) {
             synchronized (lock) {
-                if (count[0] % 2 == 0) {
-                    System.out.println(Thread.currentThread().getName() + ": " + count[0]);
-                    count[0]++;
-                    lock.notify();
-                } else {
-                    try {
+                if(count[0] >= maxNum){
+                    lock.notifyAll();
+                    break;
+                }
+
+                while(count[0] % 2 == 1){
+                    try{
                         lock.wait();
-                    } catch (InterruptedException e) {
+                    }catch(InterruptedException e){
                         Thread.currentThread().interrupt();
-                        break;
+                        return;
                     }
                 }
+
+                System.out.printf("%s:%d%n", Thread.currentThread().getName(), count[0]);
+                count[0]++;
+                lock.notifyAll();
             }
         }
     }
