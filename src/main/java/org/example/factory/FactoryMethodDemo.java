@@ -31,5 +31,7 @@ public class FactoryMethodDemo {
         PhoneFactory_2 iphoneFactory = new IPhoneFactory();
         Phone iphone = iphoneFactory.createPhone();
         iphone.call(); // 输出：苹果手机：打电话
+
+        //git_test_line
     }
 }
