@@ -26,10 +26,10 @@ public class FactoryMethodDemo {
         // 使用者需要哪个产品，就创建对应的工厂
         PhoneFactory_2 huaweiFactory = new HuaweiFactory();
         Phone huawei = huaweiFactory.createPhone();
-        huawei.call(); // 输出：华为手机：打电话 📱
+        huawei.call(); // 输出：华为手机：打电话
 
         PhoneFactory_2 iphoneFactory = new IPhoneFactory();
         Phone iphone = iphoneFactory.createPhone();
-        iphone.call(); // 输出：苹果手机：打电话 📱
+        iphone.call(); // 输出：苹果手机：打电话
     }
 }
