@@ -1,4 +1,4 @@
-package org.example.Tree.Traversal;
+package org.example.Tree.TraversalRecursion;
 
 import org.example.Tree.Basic.TreeNode;
 import java.util.ArrayList;
