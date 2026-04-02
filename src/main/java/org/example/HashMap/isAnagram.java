@@ -1,4 +1,4 @@
-package org.example.HashTable;
+package org.example.HashMap;
 
 public class isAnagram {
     public boolean isAnagram(String s,String t){
